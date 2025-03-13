@@ -11,6 +11,7 @@ find_package(rclpy REQUIRED)
 find_package(nav2_bringup REQUIRED)
 find_package(nav2_core REQUIRED)
 find_package(geometry_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
 
 install(
   DIRECTORY launch
@@ -37,6 +38,11 @@ install(
   DESTINATION share/${PROJECT_NAME}
 )
 
+# Install Python scripts
+install(PROGRAMS
+  scripts/auto_navigate.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
