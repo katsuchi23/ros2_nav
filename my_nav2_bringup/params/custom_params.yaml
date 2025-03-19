@@ -375,7 +375,7 @@ collision_monitor:
     polygons: ["PolygonStop", "PolygonSlow", "FootprintApproach"]
     PolygonStop:
       type: "polygon"
-      points: [0.15, 0.15, 0.15, -0.15, 0.0, -0.15, 0.0, 0.15]
+      points: [0.3, 0.3, 0.3, -0.3, -0.3, -0.3, -0.3, 0.3]
       action_type: "stop"
       max_points: 3
       visualize: True
