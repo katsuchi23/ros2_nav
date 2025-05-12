@@ -5,12 +5,26 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-# find dependencies
+# Find required packages
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
 
+# Build the detected_dock_pose_publisher executable
+add_executable(detected_dock_pose_publisher src/detected_dock_pose_publisher.cpp)
+ament_target_dependencies(detected_dock_pose_publisher
+  rclcpp
+  geometry_msgs
+  tf2_ros
+)
+
+# Install the executable
+install(TARGETS
+  detected_dock_pose_publisher
+  DESTINATION lib/${PROJECT_NAME})
+
+# Install directories
 install(
   DIRECTORY src launch rviz urdf config world
   DESTINATION share/${PROJECT_NAME}

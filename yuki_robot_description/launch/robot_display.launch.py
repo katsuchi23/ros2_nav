@@ -8,7 +8,7 @@ def generate_launch_description():
     print(pkg_share)
     default_model_path = os.path.join(pkg_share, 'urdf', 'robot.urdf')
     default_rviz_config_path = os.path.join(pkg_share, 'rviz', 'config.rviz')
-    world_path=os.path.join(pkg_share, 'world', 'scene.sdf')
+    world_path=os.path.join(pkg_share, 'world', 'turtlebot3_dqn_stage1.world')
     
     robot_state_publisher_node = launch_ros.actions.Node(
         package='robot_state_publisher',
