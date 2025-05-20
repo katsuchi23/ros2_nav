@@ -3,7 +3,7 @@
         image_transport: raw    # Controls image compression - 'raw' means uncompressed images
         family: 36h11           # The type/style of AprilTag - 36h11 is a common, reliable family
         size: 0.08              # default/global tag edge size in meters that will be used for all detected AprilTags unless overridden
-        max_hamming: 0          # How many bit errors to tolerate - 0 means no errors allowed, making detection stricter
+        max_hamming: 100          # How many bit errors to tolerate - 0 means no errors allowed, making detection stricter
 
         # see "apriltag.h" 'struct apriltag_detector' for more documentation on these optional parameters
         detector:
@@ -14,8 +14,9 @@
             sharpening: 0.25    # How much to sharpen the image - can help see tag edges better
             debug: False        # Whether to save debug images - useful for troubleshooting
 
+        pose_estimation_method: "pnp"
         # optional list of tags
         tag:
             ids: [0]                           # Which tag IDs to look for
-            #frames: [charging_dock_apriltag]  # What to name each tag's coordinate frame
-            #sizes: [0.25]                     # Individual size overrides for specific tags
+            frames: ["dock"]  # What to name each tag's coordinate frame
+            sizes: [0.162]                     # Individual size overrides for specific tags

@@ -47,15 +47,15 @@ def generate_launch_description():
         default_value=default_apriltag_ros_config_file_path,
         description='Full path to the AprilTag config file to use')
 
-    declare_camera_frame_id_cmd = DeclareLaunchArgument(
-        name='camera_frame_type',  # Changed from 'camera_id_type' to 'camera_frame_type'
-        default_value='camera_depth_frame',
-        description='Type of camera frame id (e.g., camera_depth_frame, camera_rgb_frame, etc.)'
+    declare_camera_frame_type_cmd = DeclareLaunchArgument(
+        name='camera_frame_type',
+        default_value='_depth_optical_frame',
+        description='Type of camera frame to use (e.g., _depth_optical_frame, _optical_frame)'
     )
 
     declare_camera_namespace_cmd = DeclareLaunchArgument(
         name='camera_namespace',
-        default_value='depth_camera',
+        default_value='cam_1',
         description='Namespace for the camera and AprilTag nodes'
     )
 
@@ -85,8 +85,8 @@ def generate_launch_description():
         namespace=camera_namespace,
         remappings=[
             ('image', 'image_raw'),
-            ('image_rect', 'image_rect'),
             ('camera_info', 'camera_info'),
+            ('image_rect', 'image_rect'),
         ],
         parameters=[{
             'queue_size': 5,
@@ -114,7 +114,8 @@ def generate_launch_description():
         extra_arguments=[{'use_intra_process_comms': True}]
     )
 
-    # Create the container
+
+    # Create the container with both nodes
     start_apriltag_dock_pose_publisher = ComposableNodeContainer(
         name='apriltag_dock_pose_publisher',
         namespace=camera_namespace,
@@ -133,7 +134,7 @@ def generate_launch_description():
         executable='detected_dock_pose_publisher',
         parameters=[{
             'use_sim_time': use_sim_time,
-            'parent_frame': [camera_frame_type],
+            'parent_frame': [camera_namespace, TextSubstitution(text=''), camera_frame_type],
             'child_frame': [tag_family, TextSubstitution(text=':'), tag_id],
             'publish_rate': 10.0
         }],
@@ -145,7 +146,7 @@ def generate_launch_description():
 
     # Add the arguments
     ld.add_action(declare_apriltag_config_file_cmd)
-    ld.add_action(declare_camera_frame_id_cmd)
+    ld.add_action(declare_camera_frame_type_cmd)
     ld.add_action(declare_camera_namespace_cmd)
     ld.add_action(declare_tag_family_cmd)
     ld.add_action(declare_tag_id_cmd)
@@ -153,6 +154,6 @@ def generate_launch_description():
 
     # Add the container
     ld.add_action(start_apriltag_dock_pose_publisher)
-    ld.add_action(start_detected_dock_pose_publisher)
+    # ld.add_action(start_apriltag_dock_pose_publisher)
 
     return ld

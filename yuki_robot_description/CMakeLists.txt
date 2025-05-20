@@ -26,7 +26,7 @@ install(TARGETS
 
 # Install directories
 install(
-  DIRECTORY src launch rviz urdf config world
+  DIRECTORY src launch rviz urdf config world meshes
   DESTINATION share/${PROJECT_NAME}
 )
 
