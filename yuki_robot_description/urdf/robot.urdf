@@ -402,7 +402,7 @@
         <image>
           <width>640</width>
           <height>480</height>
-          <format>R8G8B8</format>
+          <format>L8</format>
         </image>
         <clip>
           <near>0.05</near>
@@ -410,21 +410,25 @@
         </clip>
       </camera>
       <plugin name="depth_camera_controller" filename="libgazebo_ros_camera.so">
+        <cameraName>depth_cam</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <cameraInfoURL>file:///home/rey/ros_nav/src/yuki_robot_description/config/camera_callibration.yaml</cameraInfoURL>
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>0.0</updateRate>
         <frame_name>cam_1_depth_optical_frame</frame_name>
         <pointCloudCutoff>0.5</pointCloudCutoff>
         <pointCloudCutoffMax>3.0</pointCloudCutoffMax>
-        <distortionK1>0</distortionK1>
-        <distortionK2>0</distortionK2>
-        <distortionK3>0</distortionK3>
-        <distortionT1>0</distortionT1>
-        <distortionT2>0</distortionT2>
+        <distortionK1>0.1</distortionK1>
+        <distortionK2>-0.05</distortionK2>
+        <distortionK3>0.001</distortionK3>
+        <distortionT1>0.0005</distortionT1>
+        <distortionT2>-0.0002</distortionT2>
         <CxPrime>0</CxPrime>
-        <Cx>0</Cx>
-        <Cy>0</Cy>
-        <focalLength>0</focalLength>
+        <Cx>320.5</Cx>
+        <Cy>240.5</Cy>
+        <focalLength>554.254691191187</focalLength>
         <hackBaseline>0</hackBaseline>
       </plugin>
     </sensor>

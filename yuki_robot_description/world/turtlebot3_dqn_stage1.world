@@ -72,7 +72,7 @@
     </scene>
     <gui fullscreen='0'>
       <camera name='user_camera'>
-        <pose>-1.42471 -0.633797 1.46311 0 0.5258 0.241599</pose>
+        <pose>1.42721 -1.25547 0.493101 0 0.3018 0.873599</pose>
         <view_controller>orbit</view_controller>
         <projection_type>perspective</projection_type>
       </camera>
@@ -363,15 +363,15 @@
       </spot>
     </light>
     <state world_name='default'>
-      <sim_time>241 940000000</sim_time>
-      <real_time>18 632511491</real_time>
-      <wall_time>1747031249 292535945</wall_time>
-      <iterations>18624</iterations>
+      <sim_time>274 776000000</sim_time>
+      <real_time>32 847286448</real_time>
+      <wall_time>1747743877 161029424</wall_time>
+      <iterations>32836</iterations>
       <model name='Apriltag36_11_00000'>
-        <pose>2.345 0 0.2 1.5708 -0 1.5708</pose>
+        <pose>2.3 0 0.2 1.5708 -0 1.5708</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose>2.345 0 0.2 1.5708 -0 1.5708</pose>
+          <pose>2.3 0 0.2 1.5708 -0 1.5708</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
