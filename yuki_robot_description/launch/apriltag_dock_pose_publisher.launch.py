@@ -55,7 +55,7 @@ def generate_launch_description():
 
     declare_camera_namespace_cmd = DeclareLaunchArgument(
         name='camera_namespace',
-        default_value='cam_1',
+        default_value='camera',
         description='Namespace for the camera and AprilTag nodes'
     )
 
@@ -85,7 +85,7 @@ def generate_launch_description():
         namespace=camera_namespace,
         remappings=[
             ('image', 'image_raw'),
-            ('camera_info', 'camera_info'),
+            ('camera_info', 'camera_info_corrected'),
             ('image_rect', 'image_rect'),
         ],
         parameters=[{
@@ -105,7 +105,7 @@ def generate_launch_description():
         namespace=camera_namespace,
         remappings=[
             ('image_rect', 'image_rect'),
-            ('camera_info', 'camera_info'),
+            ('camera_info', 'camera_info_corrected'),
         ],
         parameters=[
             apriltag_config_file,

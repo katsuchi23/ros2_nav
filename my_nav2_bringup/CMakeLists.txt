@@ -14,7 +14,7 @@ find_package(geometry_msgs REQUIRED)
 find_package(nav2_msgs REQUIRED)
 
 install(
-  DIRECTORY launch
+  DIRECTORY launch world
   DESTINATION share/${PROJECT_NAME}
 )
 
